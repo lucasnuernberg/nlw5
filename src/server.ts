@@ -1,6 +1,14 @@
-import express, { response } from "express";
+import express from "express";
+
+import "./database"; // cria a conexão
+
+import { routes } from "./routes"
 
 const app = express();
+
+app.use(express.json())
+
+app.use(routes);
 
 /*
 
@@ -11,15 +19,5 @@ const app = express();
 * PATCH -> ALTERAÇÃO ESPECÍFICA
 
 */
-
-app.get("/", (resquest, response) => {
-    return response.json({
-        nome: "Lucas"
-    })
-});
-
-app.post("/users", (request, response) => {
-    return response.json({usuario: "salvo"})
-})
 
 app.listen(3333, ()=> {console.log('Server is running 3333')});
